@@ -34,6 +34,7 @@ function saveLocalEntry(entry) {
 
 async function saveDiagnosis(entry) {
   if (!supabase) {
+    console.warn("Supabase no inicializado: revisa VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY. Guardando en localStorage.");
     saveLocalEntry(entry);
     return;
   }
@@ -43,12 +44,19 @@ async function saveDiagnosis(entry) {
     .insert({ payload: entry });
 
   if (error) {
+    console.error("Error al guardar en Supabase:", {
+      message: error.message,
+      code: error.code,
+      details: error.details,
+      hint: error.hint,
+    });
     saveLocalEntry(entry);
   }
 }
 
 async function listDiagnoses() {
   if (!supabase) {
+    console.warn("Supabase no inicializado para lectura. Mostrando datos de localStorage.");
     return getLocalEntries().sort((a, b) => new Date(b.ts) - new Date(a.ts));
   }
 
@@ -59,6 +67,14 @@ async function listDiagnoses() {
     .limit(500);
 
   if (error || !data) {
+    if (error) {
+      console.error("Error al leer diagnósticos desde Supabase:", {
+        message: error.message,
+        code: error.code,
+        details: error.details,
+        hint: error.hint,
+      });
+    }
     return getLocalEntries().sort((a, b) => new Date(b.ts) - new Date(a.ts));
   }
 

@@ -24,7 +24,7 @@ export const QUESTION_TEXT = {
   },
   rubro: {
     bot: ["¿Cuál es el rubro principal de tu empresa?"],
-    opts: ["Corretaje de Granos", "Exportación / Trading", "Logística Agro", "Finanzas & Seguros", "Agroindustria", "Tecnología / SaaS", "Otro"],
+    opts: ["Agroindustria", "Salud", "Comunicación", "Finanzas", "Energía", "Comercio", "Infraestructura", "Otro"],
   },
   size: {
     bot: ["¿Cantidad de empleados?"],
@@ -133,26 +133,33 @@ export const STATS_TEXT = {
     "Solo el 4% de las empresas argentinas considera la IA como prioridad estratégica, pese a que el 67% ya tiene alguna iniciativa en marcha (Bain & Company, 2025).",
     "El 60% de las PyMEs argentinas ya usa IA o IA generativa, pero la inversión es desordenada y sin estrategia clara (Microsoft/Edelman, 2025).",
   ],
-  "Finanzas & Seguros": [
-    "El sector bancario y financiero tiene una adopción sistemática de IA del 69% en LATAM — la segunda más alta después de telecomunicaciones (IDC/Intel, 2025).",
-    "Bancolombia logró un 30% más de generación de código y 18.000 cambios automatizados por año con IA (Google Cloud, 2025).",
-  ],
   Agroindustria: [
     "Grupo Pão de Açúcar usa IA para pronóstico de ventas en 700+ tiendas y 60.000+ productos (Google Cloud, 2025). La agroindustria que no integra IA en su cadena pierde eficiencia cada trimestre.",
     "En Argentina, el 43% de las organizaciones ya ve resultados de implementación de IA, pero el 57% restante no los ve — en gran parte por falta de estrategia (Meta/Linux Foundation, 2025).",
   ],
-  "Tecnología / SaaS": [
-    "Mercado Libre ya genera el 20% de su nuevo código con IA y usa búsqueda semántica vía Vertex AI (Google Cloud, 2025). En SaaS, la ventana para diferenciarse con IA se cierra rápido.",
-    "El 14% de las empresas de LATAM ya tiene proyectos de IA agéntica activos. En tecnología, ese número crece más rápido que en cualquier otro sector (NTT DATA, 2025).",
+  Salud: [
+    "Los hospitales de LATAM que adoptaron IA clínica redujeron tiempos de diagnóstico en promedio 35% (IDC/Intel, 2025). En salud, cada minuto de diagnóstico impacta directamente en resultados.",
+    "El sector de salud lidera la adopción de IA para análisis de datos predictivos, con 62% de implementaciones activas en LATAM (Bain & Company, 2025).",
   ],
-  "Corretaje de Granos": [
-    "El 49% de la inversión de empresas argentinas en IA no tiene claridad presupuestaria (NTT DATA, 2025). En corretaje, donde los márgenes son estrechos, eso significa oportunidad perdida cada día.",
+  Comunicación: [
+    "Medios y telecomunicaciones han logrado a través de IA incrementos de 25-40% en personalización de contenidos y retención de usuarios (McKinsey, 2025).",
+    "El 71% de las empresas de comunicación en LATAM ya usa IA para análisis de audiencia y optimización editorial (NTT DATA, 2025).",
   ],
-  "Logística Agro": [
-    "Manufactura tiene 67% de adopción sistemática de IA en LATAM (IDC/Intel, 2025). Logística y supply chain son las áreas donde el impacto se mide en horas y costos directos.",
+  Finanzas: [
+    "El sector bancario y financiero tiene una adopción sistemática de IA del 69% en LATAM — la segunda más alta después de telecomunicaciones (IDC/Intel, 2025).",
+    "Bancolombia logró un 30% más de generación de código y 18.000 cambios automatizados por año con IA (Google Cloud, 2025).",
   ],
-  "Exportación / Trading": [
-    "Los servicios financieros y el trading lideran la adopción de IA generativa en LATAM, con eficiencia operativa como principal beneficio buscado por el 54% de las empresas (NTT DATA, 2025).",
+  Energía: [
+    "Empresas de energía en LATAM emplean IA para optimización de redes con reducción de pérdidas de hasta 18% y predictive maintenance (IDC/Intel, 2025).",
+    "La adopción de IA en el sector energético es del 58% en LATAM, orientada principalmente a eficiencia operativa y sostenibilidad (Bain & Company, 2025).",
+  ],
+  Comercio: [
+    "El comercio minorista que integra IA obtiene mejoras de 15-22% en conversión y 30% en gestión de inventario (McKinsey + WEF, 2026).",
+    "Mercado Libre ya genera el 20% de su nuevo código con IA y usa búsqueda semántica vía Vertex AI (Google Cloud, 2025).",
+  ],
+  Infraestructura: [
+    "Proyectos de infraestructura con IA logran detección de anomalías en estructuras 40% más rápida que inspecciones tradicionales (IDC/Intel, 2025).",
+    "La adopción de IA en construcción e infraestructura crece 22% anual en LATAM, enfocada en BIM, planificación y seguridad (Bain & Company, 2025).",
   ],
 };
 

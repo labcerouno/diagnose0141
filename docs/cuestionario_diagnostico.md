@@ -55,12 +55,13 @@ Selección única
 
 ### Opciones
 
-- Corretaje de Granos
-- Exportación / Trading
-- Logística Agro
-- Finanzas & Seguros
 - Agroindustria
-- Tecnología / SaaS
+- Salud
+- Comunicación
+- Finanzas
+- Energía
+- Comercio
+- Infraestructura
 - Otro
 
 ## Pregunta 2

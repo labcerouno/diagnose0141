@@ -73,7 +73,6 @@ Calculados por `getArch(cap, vol, cla, edu, hasTeam)`:
 | `Bub` | Burbuja de mensaje (bot o usuario). Soporta `**bold**` en mensajes de bot vía `dangerouslySetInnerHTML`. |
 | `Bars` | Barra de progreso de las 3 dimensiones, visible desde la pregunta 3 en adelante. |
 | `Res` | Resultado final: perfil, riesgo, brecha de formación, recomendaciones y CTA. |
-| `Adm` | Panel admin (botón "Admin" en el header) que lista todos los diagnósticos guardados con sus scores. |
 
 ## Estado principal (`App`)
 
@@ -121,6 +120,8 @@ VITE_SUPABASE_ANON_KEY=...
 ```
 
 Ver documentación detallada del modelo en `docs/supabase_modelo_datos.md`.
+
+Listado completo de preguntas y respuestas posibles en `docs/cuestionario_diagnostico.md`.
 
 ## Paleta de colores (`C`)
 

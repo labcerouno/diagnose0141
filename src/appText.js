@@ -14,19 +14,19 @@ export const APP_TEXT = {
   supabaseWriteError: "Error al guardar en Supabase:",
   microcopy: {
     cap: {
-      low: "Buena base para empezar: con este diagnóstico ya podemos ordenar un plan concreto de capacidad.",
-      mid: "Se nota una base valiosa en capacidad. Con foco ejecutivo, esto puede escalar rápido a resultados de negocio.",
-      high: "Muy buen nivel de capacidad. Están en posición de capturar valor con IA en tiempos competitivos.",
+      low: "Buena base para empezar con foco.",
+      mid: "Base sólida para escalar con impacto.",
+      high: "Capacidad alta para capturar valor rápido.",
     },
     vol: {
-      low: "Hay señales de oportunidad en la voluntad del equipo. Con una hoja de ruta clara, esto puede ganar tracción enseguida.",
-      mid: "La voluntad está bien encaminada. Con priorización comercial, pueden convertir intención en impacto medible.",
-      high: "Excelente impulso organizacional. Tienen el momentum ideal para ejecutar IA con velocidad y foco.",
+      low: "Hay intención; falta ordenarla en un plan.",
+      mid: "La voluntad está bien encaminada.",
+      high: "Momentum alto para ejecutar con velocidad.",
     },
     cla: {
-      low: "Gran avance: ya tenemos señales claras para definir un primer caso con criterio de negocio.",
-      mid: "Muy buen nivel de claridad. Están cerca de transformar esta visión en un plan ejecutable de alto impacto.",
-      high: "Claridad muy sólida. Están listos para pasar de diagnóstico a ejecución con objetivos concretos.",
+      low: "Ya hay señales para definir el primer caso.",
+      mid: "Claridad suficiente para pasar a plan.",
+      high: "Claridad alta para ejecutar con objetivos concretos.",
     },
   },
 };
@@ -295,7 +295,7 @@ export const REPORT_TEXT = {
   needsTitle: "Lo que necesitás",
   nextStepTitle: "Siguiente paso",
   noSellCopy: "No tenemos nada que venderte. Si en algún momento querés contrastar una decisión técnica o tener una segunda opinión, podés contactarnos sin compromiso.",
-  nextStepWithChallenge: "Si querés profundizar en lo que encontramos, el siguiente paso es una conversación de 45 minutos sin compromiso donde hablamos de tu desafío: \"{{challenge}}\".",
+  nextStepWithChallenge: "Si querés profundizar en lo que encontramos, el siguiente paso es una conversación de 45 minutos sin compromiso. Hablemos de tu desafío.",
   scheduleConversationButton: "Agendá una conversación →",
   shareTitle: "Informe Oxy46",
   shareText: "Te comparto mi informe de diagnóstico IA.",

@@ -14,6 +14,8 @@ import {
   STATS_TEXT,
 } from "./appText";
 import oxyLogo from "./assets/Oxy_blanco.png";
+import mirandaVar from "./assets/Miranda_Sans/MirandaSans-VariableFont_wght.ttf";
+import mirandaItalicVar from "./assets/Miranda_Sans/MirandaSans-Italic-VariableFont_wght.ttf";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -67,11 +69,24 @@ async function saveDiagnosis(entry) {
 }
 
 const C = {
-  bg:"#0f1923", card:"#1c2b36", accent:"#3a9e8f", accentLight:"#4fc4b0",
-  text:"#e8edf1", muted:"#8a9baa", dim:"#5a6f7e", white:"#fff",
-  botBub:"#1e3040", userBub:"#3a9e8f", pillBd:"#3a5565",
-  danger:"#e85d4a", purple:"#9b6dff", purpleFade:"rgba(155,109,255,0.12)",
-  accentFade:"rgba(58,158,143,0.15)",
+  bg: "#FAFAFA",
+  bgSoft: "#CBCBD0",
+  card: "#FAFAFA",
+  cardAlt: "#CBCBD0",
+  accent: "#6CC5DA",
+  accentStrong: "#35424C",
+  text: "#222B2E",
+  muted: "#7B818C",
+  dim: "#9599A2",
+  white: "#FAFAFA",
+  botBub: "#FAFAFA",
+  userBub: "#35424C",
+  userText: "#FAFAFA",
+  pillBd: "#CBCBD0",
+  danger: "#E52E34",
+  accentFade: "rgba(108,197,218,0.16)",
+  dangerFade: "rgba(229,46,52,0.12)",
+  darkFade: "rgba(34,43,46,0.08)",
 };
 
 function formatText(template, values = {}) {
@@ -168,7 +183,7 @@ function makeReportPdf(r){
     ensureSpace(32);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(18);
-    doc.setTextColor(20, 28, 35);
+    doc.setTextColor(34, 43, 46);
     doc.text(text, margin, y);
     y += 22;
   };
@@ -185,15 +200,15 @@ function makeReportPdf(r){
   };
 
   addTitle(REPORT_TEXT.title);
-  addSection(formatText(REPORT_TEXT.profileSummary, { name: r.nm || "Empresa", label: ARCHETYPE_LABELS[r.ar] || r.ar }), [58, 158, 143]);
+  addSection(formatText(REPORT_TEXT.profileSummary, { name: r.nm || "Empresa", label: ARCHETYPE_LABELS[r.ar] || r.ar }), [53, 66, 76]);
 
   addTitle(REPORT_TEXT.diagnosisTitle);
   addSection(p.intro);
   p.bullets.forEach((b) => addSection(`- ${b}`));
-  addSection(p.close, [89, 111, 126]);
+  addSection(p.close, [123, 129, 140]);
 
   addTitle(REPORT_TEXT.riskTitle);
-  r.risk.split("\n\n").forEach((x, i) => addSection(x, i > 0 ? [89, 111, 126] : [20, 28, 35]));
+  r.risk.split("\n\n").forEach((x, i) => addSection(x, i > 0 ? [123, 129, 140] : [34, 43, 46]));
 
   if (r.ef) {
     addTitle(REPORT_TEXT.educationGapTitle);
@@ -215,7 +230,7 @@ function makeReportPdf(r){
   const btnY = y + 4;
   const btnW = contentW;
   const btnH = 38;
-  doc.setFillColor(58, 158, 143);
+  doc.setFillColor(53, 66, 76);
   doc.roundedRect(btnX, btnY, btnW, btnH, 8, 8, "F");
   doc.setFont("helvetica", "bold");
   doc.setFontSize(12);
@@ -227,8 +242,8 @@ function makeReportPdf(r){
 }
 
 function Bub({t,f}){
-  if(f==="user")return <div style={{display:"flex",justifyContent:"flex-end",marginBottom:8,animation:"fs .25s ease-out"}}><div style={{background:C.userBub,borderRadius:"16px 4px 16px 16px",padding:"10px 16px",maxWidth:"78%",fontSize:14,fontWeight:600,color:C.white}}>{t}</div></div>;
-  return <div style={{display:"flex",gap:10,marginBottom:8,animation:"fs .35s ease-out"}}><div style={{width:28,height:28,borderRadius:"50%",background:C.accent,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2}}><span style={{fontSize:11,fontWeight:700,color:C.white}}>O</span></div><div style={{background:C.botBub,borderRadius:"4px 16px 16px 16px",padding:"10px 14px",maxWidth:"82%",fontSize:14,lineHeight:1.5,color:C.text}} dangerouslySetInnerHTML={{__html:t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}}/></div>;
+  if(f==="user")return <div style={{display:"flex",justifyContent:"flex-end",marginBottom:12,animation:"fs .25s ease-out"}}><div style={{background:C.userBub,borderRadius:"14px 4px 14px 14px",padding:"12px 17px",maxWidth:"79%",fontSize:16,fontWeight:600,letterSpacing:0.1,color:C.userText,boxShadow:`0 12px 26px ${C.darkFade}`}}>{t}</div></div>;
+  return <div style={{display:"flex",gap:10,marginBottom:12,animation:"fs .35s ease-out"}}><div style={{width:30,height:30,borderRadius:"50%",background:C.accentStrong,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,boxShadow:`0 0 0 4px ${C.accentFade}`}}><span style={{fontSize:11,fontWeight:740,color:C.white}}>O</span></div><div style={{background:C.botBub,borderRadius:"4px 14px 14px 14px",padding:"13px 14px",maxWidth:"84%",fontSize:16,lineHeight:1.58,color:C.text,textAlign:"left",border:`1px solid ${C.pillBd}`,borderLeft:`3px solid ${C.accentStrong}`,boxShadow:`0 8px 20px ${C.darkFade}`}} dangerouslySetInnerHTML={{__html:t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}}/></div>;
 }
 
 function Res({r}){
@@ -260,29 +275,29 @@ function Res({r}){
     }
   };
 
-  return <div style={{animation:"fs .5s ease-out"}}><div style={{background:C.botBub,borderRadius:"4px 16px 16px 16px",padding:"18px 16px",marginBottom:8,marginLeft:38}}>
-    <div style={{fontSize:13.5,lineHeight:1.75,color:C.text}}>
+  return <div style={{animation:"fs .5s ease-out"}}><div style={{background:C.botBub,borderRadius:"4px 14px 14px 14px",padding:"20px 16px",marginBottom:10,marginLeft:40,border:`1px solid ${C.pillBd}`,borderLeft:`3px solid ${C.accentStrong}`,boxShadow:`0 10px 28px ${C.darkFade}`}}>
+    <div style={{fontSize:15.5,lineHeight:1.75,color:C.text}}>
       <p style={{margin:"0 0 14px"}}>{p.intro}</p>
-      {p.bullets.map((b,i)=><div key={i} style={{display:"flex",gap:10,margin:"8px 0"}}><span style={{color:C.accent,fontWeight:700,flexShrink:0,marginTop:2}}>→</span><span>{b}</span></div>)}
-      <p style={{margin:"14px 0 0",color:C.muted,fontStyle:"italic",fontSize:13}}>{p.close}</p>
+      {p.bullets.map((b,i)=><div key={i} style={{display:"flex",gap:10,margin:"8px 0"}}><span style={{color:C.accentStrong,fontWeight:700,flexShrink:0,marginTop:2}}>→</span><span>{b}</span></div>)}
+      <p style={{margin:"14px 0 0",color:C.muted,fontStyle:"italic",fontSize:14.5}}>{p.close}</p>
 
-      <div style={{height:1,background:"rgba(255,255,255,.06)",margin:"20px 0"}}/>
-      <p style={{margin:"0 0 8px",fontWeight:700,color:C.danger,fontSize:11,textTransform:"uppercase",letterSpacing:1}}>{REPORT_TEXT.riskTitle}</p>
-      {r.risk.split("\n\n").map((x,i)=><p key={i} style={{margin:"0 0 10px",fontSize:13,lineHeight:1.65,...(i>0?{color:C.muted,fontSize:12.5}:{})}}>{x}</p>)}
+      <div style={{height:1,background:C.pillBd,margin:"20px 0"}}/>
+      <p style={{margin:"0 0 8px",fontWeight:760,color:C.danger,fontSize:12,textTransform:"uppercase",letterSpacing:0.9}}>{REPORT_TEXT.riskTitle}</p>
+      {r.risk.split("\n\n").map((x,i)=><p key={i} style={{margin:"0 0 10px",fontSize:14.5,lineHeight:1.65,...(i>0?{color:C.muted,fontSize:14}:{})}}>{x}</p>)}
 
-      {r.ef&&<><div style={{height:1,background:"rgba(155,109,255,.15)",margin:"20px 0"}}/><p style={{margin:"0 0 8px",fontWeight:700,color:C.purple,fontSize:11,textTransform:"uppercase",letterSpacing:1}}>{REPORT_TEXT.educationGapTitle}</p><p style={{margin:"0 0 10px",fontSize:13,lineHeight:1.65}}>{r.ef}</p></>}
+      {r.ef&&<><div style={{height:1,background:C.dangerFade,margin:"20px 0"}}/><p style={{margin:"0 0 8px",fontWeight:760,color:C.danger,fontSize:12,textTransform:"uppercase",letterSpacing:0.9}}>{REPORT_TEXT.educationGapTitle}</p><p style={{margin:"0 0 10px",fontSize:14.5,lineHeight:1.65}}>{r.ef}</p></>}
 
-      <div style={{height:1,background:"rgba(255,255,255,.06)",margin:"20px 0"}}/>
-      <p style={{margin:"0 0 8px",fontWeight:700,color:C.accentLight,fontSize:11,textTransform:"uppercase",letterSpacing:1}}>{REPORT_TEXT.needsTitle}</p>
-      {NEEDS_TEXT[r.ar].split("\n\n").map((x,i)=><p key={i} style={{margin:"0 0 12px",fontSize:13,lineHeight:1.65}}>{x}</p>)}
+      <div style={{height:1,background:C.pillBd,margin:"20px 0"}}/>
+      <p style={{margin:"0 0 8px",fontWeight:760,color:C.accentStrong,fontSize:12,textTransform:"uppercase",letterSpacing:0.9}}>{REPORT_TEXT.needsTitle}</p>
+      {NEEDS_TEXT[r.ar].split("\n\n").map((x,i)=><p key={i} style={{margin:"0 0 12px",fontSize:14.5,lineHeight:1.65}}>{x}</p>)}
     </div></div>
-    <div style={{background:C.botBub,borderRadius:"4px 16px 16px 16px",padding:"14px 16px",marginLeft:38,marginTop:8}}>
-      <p style={{margin:0,fontSize:13.5,lineHeight:1.6,color:C.text}}>
+    <div style={{background:C.botBub,borderRadius:"4px 14px 14px 14px",padding:"16px 16px",marginLeft:40,marginTop:8,border:`1px solid ${C.pillBd}`,borderLeft:`3px solid ${C.accentStrong}`,boxShadow:`0 10px 28px ${C.darkFade}`}}>
+      <p style={{margin:0,fontSize:15.5,lineHeight:1.6,color:C.text}}>
         {isAutonomo?REPORT_TEXT.noSellCopy
-          :<>{formatText(REPORT_TEXT.nextStepWithChallenge, { challenge: r.des }).split(`"${r.des}"`)[0]}<em style={{color:C.accentLight}}>"{r.des}"</em>.</>}
+          :REPORT_TEXT.nextStepWithChallenge}
       </p>
-      <button onClick={()=>window.open("https://oxy46.com","_blank")} style={{marginTop:12,background:C.accent,color:C.white,border:"none",borderRadius:10,padding:"12px 24px",fontSize:14,fontWeight:700,cursor:"pointer",width:"100%",transition:"background .2s"}} onMouseEnter={e=>e.target.style.background=C.accentLight} onMouseLeave={e=>e.target.style.background=C.accent}>{isAutonomo?APP_TEXT.learnMoreButton:REPORT_TEXT.scheduleConversationButton}</button>
-      <button onClick={shareReport} disabled={sharing} style={{marginTop:10,background:"transparent",color:C.accentLight,border:`1px solid ${C.accentLight}`,borderRadius:10,padding:"11px 24px",fontSize:14,fontWeight:700,cursor:sharing?"wait":"pointer",width:"100%",opacity:sharing?0.7:1}}>{sharing?APP_TEXT.shareLoading:APP_TEXT.shareButton}</button>
+      <button onClick={()=>window.open("https://oxy46.com","_blank")} style={{marginTop:14,background:C.accentStrong,color:C.white,border:"none",borderRadius:10,padding:"13px 24px",fontSize:15,fontWeight:700,letterSpacing:0.2,cursor:"pointer",width:"100%",transition:"filter .2s"}} onMouseEnter={e=>e.target.style.filter="brightness(1.1)"} onMouseLeave={e=>e.target.style.filter="none"}>{isAutonomo?APP_TEXT.learnMoreButton:REPORT_TEXT.scheduleConversationButton}</button>
+      <button onClick={shareReport} disabled={sharing} style={{marginTop:10,background:"transparent",color:C.accentStrong,border:`1px solid ${C.accentStrong}`,borderRadius:10,padding:"12px 24px",fontSize:15,fontWeight:680,cursor:sharing?"wait":"pointer",width:"100%",opacity:sharing?0.7:1}}>{sharing?APP_TEXT.shareLoading:APP_TEXT.shareButton}</button>
     </div></div>;
 }
 
@@ -396,19 +411,22 @@ export default function App(){
   const sub=()=>{if(!iv.trim())return;const v=iv.trim();setIv("");setShowIn(false);proc(v);};
   const so=!res&&!typ&&(!!cQ||(nc&&!cd&&step>=QS.length));
 
-  return <><style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');*{box-sizing:border-box;margin:0;padding:0;}@keyframes fs{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}@keyframes pulse{0%,100%{opacity:.3;}50%{opacity:1;}}input::placeholder{color:${C.dim};}`}</style>
-    <div style={{fontFamily:"'DM Sans',sans-serif",background:C.bg,height:"100vh",display:"flex",flexDirection:"column",maxWidth:480,margin:"0 auto",position:"relative"}}>
-      <div style={{padding:"14px 16px",background:C.card,borderBottom:`1px solid ${C.pillBd}`,display:"flex",alignItems:"center",gap:12,flexShrink:0}}>
-        <div style={{width:40,height:40,borderRadius:10,background:C.accent,display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden"}}><img src={oxyLogo} alt={APP_TEXT.logoAlt} style={{width:"100%",height:"100%",objectFit:"contain",padding:4}}/></div>
-        <div style={{flex:1}}><div style={{fontSize:14,fontWeight:700,color:C.text}}>{APP_TEXT.assistantTitle}</div><div style={{fontSize:11,color:C.accent,display:"flex",alignItems:"center",gap:4}}><span style={{width:6,height:6,borderRadius:"50%",background:C.accent,display:"inline-block"}}/>{APP_TEXT.statusActive}</div></div></div>
-      <div ref={cr} style={{flex:1,overflow:"auto",padding:"16px 16px 8px",display:"flex",flexDirection:"column"}}>
+  return <><style>{`@font-face{font-family:'Miranda Sans';src:url(${mirandaVar}) format('truetype');font-style:normal;font-weight:100 900;font-display:swap;}@font-face{font-family:'Miranda Sans';src:url(${mirandaItalicVar}) format('truetype');font-style:italic;font-weight:100 900;font-display:swap;}*{box-sizing:border-box;margin:0;padding:0;}@keyframes fs{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}@keyframes pulse{0%,100%{opacity:.3;}50%{opacity:1;}}@keyframes reveal{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}input::placeholder{color:${C.dim};}.lux-shell{position:relative;overflow:hidden;}.lux-shell:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg, rgba(203,203,208,.3), transparent 26%, transparent 74%, rgba(203,203,208,.22));pointer-events:none;}.lux-shell:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg, transparent 0 10px, rgba(53,66,76,.02) 10px 11px);pointer-events:none;}`}</style>
+    <div style={{fontFamily:"'Miranda Sans',sans-serif",background:`linear-gradient(165deg, ${C.bg} 0%, ${C.bgSoft} 100%)`,height:"100vh",display:"flex",flexDirection:"column",maxWidth:520,margin:"0 auto",position:"relative",textAlign:"left",padding:"10px 10px 0"}}>
+      <div className="lux-shell" style={{padding:"14px 16px 16px",background:C.card,border:`1px solid ${C.pillBd}`,borderBottom:`1px solid ${C.pillBd}`,display:"flex",flexDirection:"column",gap:12,flexShrink:0,borderRadius:"12px 12px 0 0",boxShadow:`0 16px 30px ${C.darkFade}`,animation:"reveal .35s ease-out"}}>
+        <div style={{display:"flex",alignItems:"center",gap:12}}>
+          <div style={{width:42,height:42,borderRadius:10,background:C.accentStrong,display:"flex",alignItems:"center",justifyContent:"center",overflow:"hidden"}}><img src={oxyLogo} alt={APP_TEXT.logoAlt} style={{width:"100%",height:"100%",objectFit:"contain",padding:4}}/></div>
+          <div style={{flex:1}}><div style={{fontSize:18,fontWeight:760,color:C.text,lineHeight:1.2,letterSpacing:0.1}}>{APP_TEXT.assistantTitle}</div><div style={{fontSize:12,color:C.accentStrong,display:"flex",alignItems:"center",gap:6,marginTop:4,textTransform:"uppercase",letterSpacing:0.8,fontWeight:680}}><span style={{width:7,height:7,borderRadius:"50%",background:C.accent,display:"inline-block"}}/>{APP_TEXT.statusActive}</div></div>
+        </div>
+      </div>
+      <div ref={cr} style={{flex:1,overflow:"auto",padding:"16px 14px 8px",display:"flex",flexDirection:"column",background:C.card,border:`1px solid ${C.pillBd}`,borderTop:"none"}}>
         {msgs.map((m,i)=><Bub key={i} t={m.t} f={m.f}/>)}
-        {typ&&<div style={{display:"flex",gap:10,marginBottom:8}}><div style={{width:28,height:28,borderRadius:"50%",background:C.accent,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><span style={{fontSize:11,fontWeight:700,color:C.white}}>O</span></div><div style={{background:C.botBub,borderRadius:"4px 16px 16px 16px",padding:"12px 18px",display:"flex",gap:4}}>{[0,1,2].map(i=><div key={i} style={{width:6,height:6,borderRadius:"50%",background:C.muted,animation:`pulse 1.2s ease-in-out ${i*.2}s infinite`}}/>)}</div></div>}
+        {typ&&<div style={{display:"flex",gap:10,marginBottom:8}}><div style={{width:30,height:30,borderRadius:"50%",background:C.accentStrong,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}><span style={{fontSize:11,fontWeight:760,color:C.white}}>O</span></div><div style={{background:C.botBub,borderRadius:"6px 16px 16px 16px",padding:"12px 18px",display:"flex",gap:4,border:`1px solid ${C.pillBd}`}}>{[0,1,2].map(i=><div key={i} style={{width:6,height:6,borderRadius:"50%",background:C.muted,animation:`pulse 1.2s ease-in-out ${i*.2}s infinite`}}/>)}</div></div>}
         {res&&<div ref={rr}><Res r={res}/></div>}<div style={{height:8}}/></div>
-      {!res&&<div style={{flexShrink:0,padding:"8px 16px 16px",background:`linear-gradient(transparent, ${C.bg} 20%)`}}>
-        {so&&cQ?.type==="scored"&&<div style={{display:"flex",flexDirection:"column",gap:8}}>{cQ.opts.map((o,i)=><button key={i} onClick={()=>proc(o.l,o.s)} style={{background:"transparent",border:`1.5px solid ${cQ.isEdu?"rgba(155,109,255,.3)":C.pillBd}`,borderRadius:12,padding:"11px 16px",color:C.text,fontSize:13.5,fontWeight:500,cursor:"pointer",textAlign:"left",transition:"all .15s"}} onMouseEnter={e=>{e.target.style.background=cQ.isEdu?C.purpleFade:C.accentFade;e.target.style.borderColor=cQ.isEdu?C.purple:C.accent;}} onMouseLeave={e=>{e.target.style.background="transparent";e.target.style.borderColor=cQ.isEdu?"rgba(155,109,255,.3)":C.pillBd;}}>{o.l}</button>)}</div>}
-        {so&&cQ?.type==="choice"&&!awaitingRubroOther&&<div style={{display:"flex",flexDirection:"column",alignItems:"stretch",gap:8}}>{cQ.opts.map((o,i)=><button key={i} onClick={()=>proc(o)} style={{background:"transparent",border:`1.5px solid ${C.pillBd}`,borderRadius:12,padding:"11px 16px",color:C.text,fontSize:13.5,fontWeight:500,cursor:"pointer",transition:"all .15s",textAlign:"left"}} onMouseEnter={e=>{e.target.style.background=C.accentFade;e.target.style.borderColor=C.accent;}} onMouseLeave={e=>{e.target.style.background="transparent";e.target.style.borderColor=C.pillBd;}}>{o}</button>)}</div>}
-        {so&&nc&&!cd&&step>=QS.length&&<div style={{display:"flex",flexDirection:"column",gap:8}}>{COND.opts.map((o,i)=><button key={i} onClick={()=>proc(o)} style={{background:"transparent",border:`1.5px solid ${C.pillBd}`,borderRadius:12,padding:"11px 16px",color:C.text,fontSize:13.5,fontWeight:500,cursor:"pointer",textAlign:"left",transition:"all .15s"}} onMouseEnter={e=>{e.target.style.background=C.accentFade;e.target.style.borderColor=C.accent;}} onMouseLeave={e=>{e.target.style.background="transparent";e.target.style.borderColor=C.pillBd;}}>{o}</button>)}</div>}
-        {(showIn||(so&&cQ?.type==="text"))&&!nc&&<div style={{display:"flex",gap:8}}><input ref={ir} value={iv} onChange={e=>setIv(e.target.value)} onKeyDown={e=>e.key==="Enter"&&sub()} placeholder={step===0?APP_TEXT.namePlaceholder:APP_TEXT.answerPlaceholder} style={{flex:1,background:C.card,border:`1.5px solid ${C.pillBd}`,borderRadius:12,padding:"12px 16px",color:C.text,fontSize:14,outline:"none",fontFamily:"inherit"}} onFocus={e=>e.target.style.borderColor=C.accent} onBlur={e=>e.target.style.borderColor=C.pillBd}/><button onClick={sub} style={{background:C.accent,border:"none",borderRadius:12,padding:"0 18px",color:C.white,fontWeight:700,fontSize:14,cursor:"pointer"}}>→</button></div>}
+      {!res&&<div style={{flexShrink:0,padding:"10px 14px 14px",background:`linear-gradient(transparent, ${C.card} 16%)`,border:`1px solid ${C.pillBd}`,borderTop:"none",borderRadius:"0 0 12px 12px",boxShadow:`0 16px 30px ${C.darkFade}`}}>
+        {so&&cQ?.type==="scored"&&<div style={{display:"flex",flexDirection:"column",gap:8}}>{cQ.opts.map((o,i)=><button key={i} onClick={()=>proc(o.l,o.s)} style={{background:C.card,border:`1.5px solid ${C.pillBd}`,borderRadius:12,padding:"12px 16px",color:C.text,fontSize:15,fontWeight:600,cursor:"pointer",textAlign:"left",transition:"all .15s"}} onMouseEnter={e=>{e.target.style.background=C.accentFade;e.target.style.borderColor=C.accentStrong;}} onMouseLeave={e=>{e.target.style.background=C.card;e.target.style.borderColor=C.pillBd;}}>{o.l}</button>)}</div>}
+        {so&&cQ?.type==="choice"&&!awaitingRubroOther&&<div style={{display:"flex",flexDirection:"column",alignItems:"stretch",gap:8}}>{cQ.opts.map((o,i)=><button key={i} onClick={()=>proc(o)} style={{background:C.card,border:`1.5px solid ${C.pillBd}`,borderRadius:12,padding:"12px 16px",color:C.text,fontSize:15,fontWeight:600,cursor:"pointer",transition:"all .15s",textAlign:"left"}} onMouseEnter={e=>{e.target.style.background=C.accentFade;e.target.style.borderColor=C.accentStrong;}} onMouseLeave={e=>{e.target.style.background=C.card;e.target.style.borderColor=C.pillBd;}}>{o}</button>)}</div>}
+        {so&&nc&&!cd&&step>=QS.length&&<div style={{display:"flex",flexDirection:"column",gap:8}}>{COND.opts.map((o,i)=><button key={i} onClick={()=>proc(o)} style={{background:C.card,border:`1.5px solid ${C.pillBd}`,borderRadius:12,padding:"12px 16px",color:C.text,fontSize:15,fontWeight:600,cursor:"pointer",textAlign:"left",transition:"all .15s"}} onMouseEnter={e=>{e.target.style.background=C.accentFade;e.target.style.borderColor=C.accentStrong;}} onMouseLeave={e=>{e.target.style.background=C.card;e.target.style.borderColor=C.pillBd;}}>{o}</button>)}</div>}
+        {(showIn||(so&&cQ?.type==="text"))&&!nc&&<div style={{display:"flex",gap:8}}><input ref={ir} value={iv} onChange={e=>setIv(e.target.value)} onKeyDown={e=>e.key==="Enter"&&sub()} placeholder={step===0?APP_TEXT.namePlaceholder:APP_TEXT.answerPlaceholder} style={{flex:1,background:C.card,border:`1.5px solid ${C.pillBd}`,borderRadius:12,padding:"13px 16px",color:C.text,fontSize:16,outline:"none",fontFamily:"inherit"}} onFocus={e=>e.target.style.borderColor=C.accentStrong} onBlur={e=>e.target.style.borderColor=C.pillBd}/><button onClick={sub} style={{background:C.accentStrong,border:"none",borderRadius:12,padding:"0 18px",color:C.white,fontWeight:740,fontSize:16,cursor:"pointer"}}>→</button></div>}
       </div>}</div></>;
 }

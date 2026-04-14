@@ -175,56 +175,56 @@ export const STATS_TEXT = {
 
 export const PROFILE_TEXT = {
   curioso: {
-    intro: "{{name}}, tu empresa está en una etapa muy temprana del camino hacia la inteligencia artificial. Eso no es un problema — es un punto de partida. Pero es importante tener claridad sobre dónde estás parado para no dar pasos en falso.",
+    intro: "{{name}}, tu empresa está en un punto de partida.",
     bullets: [
-      "La infraestructura tecnológica todavía no está preparada para soportar proyectos de IA — los datos están dispersos y no hay sistemas que los conecten de forma útil.",
-      "El tema IA no tiene un impulsor claro dentro de la organización. Sin alguien con poder de decisión detrás, los proyectos no arrancan o se diluyen en las primeras semanas.",
-      "Todavía no hay un caso de uso concreto definido. Se habla de IA en general pero no hay un problema específico del negocio donde aplicarla con retorno medible.",
+      "Centralizá y conectá los datos clave — ese es el cimiento de cualquier proyecto de IA.",
+      "Asigná un sponsor con poder de decisión: sin ese rol, los proyectos no arrancan.",
+      "Elegí un problema concreto y definí cómo medirías el éxito con IA.",
     ],
     close: "La buena noticia: estás haciendo este diagnóstico. Eso ya te pone por delante del 67% de empresas argentinas que ni siquiera lo intentaron (Monitor Nacional de IA, 2025).",
   },
   ansioso: {
-    intro: "{{name}}, tu empresa siente la urgencia de moverse hacia la IA — y esa energía es valiosa. Pero hay una brecha importante entre la voluntad de avanzar y la preparación real para hacerlo con impacto.",
+    intro: "{{name}}, tu empresa siente la urgencia de moverse hacia la IA — y esa energía es valiosa.",
     bullets: [
-      "Hay decisión de moverse, pero la infraestructura de datos y los sistemas todavía no están al nivel que se necesita. Implementar IA sobre datos dispersos o inconsistentes genera frustraciones, no resultados.",
-      "La urgencia es genuina, pero sin un plan estratégico puede convertirse en inversión dispersa — herramientas que nadie adopta, pilotos que no escalan, proveedores que no cumplen.",
-      "Falta definir con precisión cuál es el primer problema de negocio que IA resolvería. Sin ese foco, es fácil intentar resolver todo y no resolver nada.",
+      "Auditá el estado de tus datos antes de implementar — ese paso evita frustraciones costosas.",
+      "Convertí la urgencia en un plan: priorizá un caso, definí métricas y presupuesto antes de hablar con proveedores.",
+      "Elegí un problema acotado para empezar — resolverlo bien vale más que intentar todo a la vez.",
     ],
     close: "La urgencia que sentís no está mal. Lo que necesitás es canalizarla. El 44% de las empresas argentinas que invierten en IA no miden ningún KPI de resultado (Monitor Nacional, 2025) — porque invirtieron sin plan.",
   },
   informado: {
-    intro: "{{name}}, tu empresa tiene bases sólidas y una dirección clara. Hay sistemas, hay voluntad, hay una noción de hacia dónde ir. El desafío ahora no es convencerse de que hay que hacer algo — es asegurar que lo que hagan tenga impacto real y sostenible.",
+    intro: "{{name}}, tu empresa tiene bases sólidas y una dirección clara. El desafío es asegurar que lo que hagan tenga impacto real.",
     bullets: [
-      "La infraestructura está en construcción — hay sistemas pero con gaps de integración o calidad de datos que pueden frenar un proyecto de IA en el momento menos esperado.",
-      "Hay voluntad real de avanzar y algo de claridad sobre el problema a resolver, pero todavía falta la definición precisa del caso y el alineamiento completo de la dirección con recursos concretos.",
-      "El equipo tiene intención pero necesita un marco común para que la adopción sea organizacional y no dependiente de dos o tres personas puntuales que saben más que el resto.",
+      "Identificá los gaps críticos de integración de datos y resolvélos antes de lanzar — eso separa un piloto exitoso del fracaso.",
+      "Asegurate de tener un sponsor real con recursos comprometidos, no solo IA en la agenda.",
+      "Armá un marco de adopción con ownership claro por área para que el avance no dependa de pocos.",
     ],
     close: "Estás en el grupo del 24% de empresas que alcanzó implementación avanzada de IA en LATAM (NTT DATA, 2025). El siguiente paso es pasar de avanzado a estratégico.",
   },
   constructor: {
-    intro: "{{name}}, tu empresa está en una posición envidiable: la infraestructura está lista, hay voluntad de avanzar y hay capacidad técnica. Lo que falta es definir el caso exacto y ejecutar sin dilaciones.",
+    intro: "{{name}}, tu empresa está en una posición envidiable: infraestructura lista, voluntad y capacidad técnica.",
     bullets: [
-      "Los datos están organizados, los sistemas funcionan y hay equipo técnico con experiencia. Las condiciones están dadas para implementar IA con resultados medibles en el corto plazo.",
-      "La dirección está comprometida y hay recursos asignados. No es un tema que flota — hay decisión real de avanzar, lo cual es poco común.",
-      "El gap está en la definición: todavía falta elegir el caso de uso prioritario con métricas claras de éxito y un timeline de ejecución concreto.",
+      "Tenés todo para arrancar: la orden de largada es lo único que falta.",
+      "Formalizá el mandato directivo con un objetivo medible y una fecha concreta de primer resultado.",
+      "Elegí el caso prioritario, definí métricas y timeline, y pasá directamente a construir.",
     ],
     close: "Con tu nivel de preparación, la distancia entre donde estás y resultados concretos es más corta de lo que parece. El 25% de las empresas con perfil similar recuperó su inversión en menos de 6 meses (IDC/Intel, 2025).",
   },
   listo: {
-    intro: "{{name}}, tu empresa tiene todo lo necesario para implementar IA con impacto transformador: infraestructura sólida, claridad estratégica, sponsor decidido y urgencia fundamentada.",
+    intro: "{{name}}, tu empresa tiene todo para implementar IA con impacto transformador.",
     bullets: [
-      "Los datos están limpios e integrados, hay casos definidos con métricas y la dirección está comprometida con recursos reales. Las condiciones son óptimas.",
-      "El equipo tiene claridad sobre qué resolver y qué esperar. No necesitás más diagnósticos ni workshops de sensibilización — necesitás construir.",
-      "La pieza que falta es capacidad técnica especializada: talento, velocidad o expertise puntual que no tenés internamente para ejecutar al nivel que tu ambición requiere.",
+      "Pasá directamente a construir: las condiciones son óptimas y el momento es ahora.",
+      "Establecé un primer hito en 60 días y comunicalo internamente para generar tracción real.",
+      "Conseguí el equipo técnico especializado — ese es el único gap que cerrar.",
     ],
     close: "Estás en el 6% de empresas de LATAM que puede capturar impacto significativo de IA (McKinsey + WEF, 2026). La diferencia entre capturarlo y no hacerlo es la velocidad de ejecución.",
   },
   autonomo: {
-    intro: "{{name}}, tu empresa está lista para ejecutar — y tiene el equipo interno para hacerlo. No necesitás consultora. Lo que compartimos es una lectura honesta de tu situación.",
+    intro: "{{name}}, tu empresa está lista para ejecutar — y tiene el equipo interno para hacerlo.",
     bullets: [
-      "Infraestructura sólida, datos integrados, equipo técnico con experiencia y proyectos en marcha. Las condiciones son las mejores posibles para capturar valor con IA.",
-      "Hay sponsor fuerte, presupuesto dedicado y claridad sobre los casos prioritarios. La organización está alineada de arriba a abajo.",
-      "Tenés capacidad de ejecución interna. No dependés de terceros para avanzar — y eso es una ventaja competitiva que pocas empresas en Argentina tienen.",
+      "Pasá de proyectos aislados a una plataforma de IA que escale resultados en múltiples procesos.",
+      "Formalizá el governance con KPIs de negocio para que el directorio vea el impacto en sus términos.",
+      "Documentá casos, medí resultados y convertílos en estándares replicables.",
     ],
     close: "Estás en una posición que la mayoría de las empresas aspira a alcanzar. Ejecutá con confianza.",
   },
@@ -240,12 +240,12 @@ export const RISK_TEXT = {
 };
 
 export const NEEDS_TEXT = {
-  curioso: "Antes de pensar en herramientas o proyectos de IA, lo que tu empresa necesita es alinear la visión a nivel directivo. Eso significa responder tres preguntas fundamentales: ¿qué papel va a jugar la IA en nuestro negocio? ¿Qué problemas concretos queremos resolver? ¿Y qué estamos dispuestos a invertir para lograrlo?\n\nEste tipo de alineamiento se logra en sesiones de trabajo cortas y enfocadas con quienes toman decisiones — no en presentaciones genéricas sobre tendencias. El beneficio es pasar de «deberíamos hacer algo con IA» a «sabemos qué hacer, por qué y en qué orden». Eso solo puede ahorrar meses de inversión mal dirigida.",
-  ansioso: "Lo que tu empresa necesita es un plan estratégico que convierta la urgencia en acción ordenada. Eso implica mapear los procesos del negocio, identificar dónde la IA puede generar impacto real (no teórico), priorizar por retorno concreto y armar una hoja de ruta con plazos, responsables y métricas de éxito.\n\nEl beneficio de este paso es frenar para avanzar mejor: en vez de invertir en la herramienta que más ruido hace, invertís en el problema que más duele. Las empresas que priorizan con rigor recuperan su inversión en un promedio de 14 meses (IDC/Intel, 2025). Las que no priorizan suelen gastar más y obtener menos.",
-  informado: "Tu empresa necesita dos cosas en paralelo. Primero, un diagnóstico profundo que mapee el estado real de tus datos, procesos y capacidades — no lo que creés que tenés sino lo que realmente hay, con sus fortalezas y sus agujeros. Segundo, un proceso de alineamiento directivo para que el sponsor sea real y no declarativo: con objetivos claros, recursos comprometidos y criterios de decisión definidos.\n\nEl beneficio es evitar el fracaso más común en proyectos de IA: empezar con entusiasmo y morir cuando se encuentran con la realidad de los datos o la falta de apoyo político. Las empresas que hacen este trabajo previo multiplican sus chances de capturar valor real.",
-  constructor: "Con tu nivel de infraestructura y voluntad, lo que necesitás es definir el caso de uso concreto con métricas claras e ir directo a ejecución. Nada de más diagnósticos ni más workshops de sensibilización — eso ya lo tenés cubierto.\n\nEl proceso ideal es un sprint de definición corto (2-3 semanas) donde se elige el caso prioritario, se definen las métricas de éxito, se valida la viabilidad técnica y se arranca a construir. El beneficio: resultados medibles en 60-90 días en vez de 6 meses de planificación que nunca aterriza.",
-  listo: "Tu empresa necesita capacidad de ejecución externa especializada que complemente lo que ya tenés internamente. No necesitás que te expliquen qué es IA ni que te ayuden a definir la estrategia — necesitás un equipo que construya a la velocidad y calidad que tu ambición requiere.\n\nEl beneficio de elegir bien esta pieza es enorme: la diferencia entre un proyecto que transforma la operación y uno que simplemente funciona. A tu nivel de madurez, el estándar debería ser transformación, no implementación básica.",
-  autonomo: "No necesitás ayuda externa para ejecutar. Tenés equipo, claridad, infraestructura y sponsor. Lo que podría sumar valor es una perspectiva externa puntual: una segunda opinión sobre decisiones técnicas, una validación de approach, o un benchmark contra lo que están haciendo empresas similares en la región.\n\nPero eso es un nice-to-have, no una necesidad. Ejecutá con confianza.",
+  curioso: "Lo que tu empresa necesita es alinear la visión directiva: ¿qué papel jugará la IA? ¿Qué problemas resolver? ¿Qué invertir?\n\nEse alineamiento, en sesiones cortas con quienes deciden, transforma el «deberíamos hacer algo» en «sabemos qué hacer y en qué orden» — y ahorra meses de inversión mal dirigida.",
+  ansioso: "Lo que necesitás es un plan estratégico: mapeá los procesos, priorizá por retorno concreto y armá una hoja de ruta con plazos, responsables y métricas.\n\nFrenar para planificar bien es avanzar mejor. Las empresas que priorizan con rigor recuperan su inversión en ~14 meses (IDC/Intel, 2025). Las que no, gastan más y obtienen menos.",
+  informado: "Tu empresa necesita dos cosas: un diagnóstico real del estado de datos y procesos, y un alineamiento directivo con objetivos claros y recursos comprometidos.\n\nEse trabajo previo evita el fracaso más común en IA: empezar con entusiasmo y frenar cuando la realidad de los datos o la falta de apoyo político aparece.",
+  constructor: "Lo que necesitás es elegir el caso de uso con métricas claras e ir directo a ejecución — sin más diagnósticos ni workshops.\n\nUn sprint de definición de 2-3 semanas (caso, métricas, viabilidad) te da resultados medibles en 60-90 días en vez de meses de planificación que nunca aterriza.",
+  listo: "Necesitás capacidad externa especializada para construir a la velocidad y calidad que tu ambición requiere — no consultores que te expliquen qué es IA.\n\nElegir bien esa pieza es la diferencia entre un proyecto que transforma la operación y uno que simplemente funciona.",
+  autonomo: "No necesitás ayuda externa. Lo que podría sumar es una perspectiva puntual: segunda opinión técnica, validación de approach o benchmark regional.\n\nPero es un nice-to-have. Ejecutá con confianza.",
 };
 
 export const EDUCATION_TEXT = {

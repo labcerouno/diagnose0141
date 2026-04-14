@@ -97,27 +97,6 @@ function buildScoredOptions(questionId) {
   return QUESTION_TEXT[questionId].opts.map((label, index) => ({ l: label, s: index + 1 }));
 }
 
-function scoreBand(score) {
-  if (score <= 2.4) return "low";
-  if (score <= 3.7) return "mid";
-  return "high";
-}
-
-function getCapMicrocopy(scores) {
-  const avg = (scores.q11 + scores.q12 + scores.q13) / 3;
-  return APP_TEXT.microcopy.cap[scoreBand(avg)];
-}
-
-function getVolMicrocopy(scores) {
-  const avg = (scores.q21 + scores.q22 + scores.q23) / 3;
-  return APP_TEXT.microcopy.vol[scoreBand(avg)];
-}
-
-function getClarityMicrocopy(scores) {
-  const avg = (scores.q31 + scores.q32) / 2;
-  return APP_TEXT.microcopy.cla[scoreBand(avg)];
-}
-
 const QS = [
   { id:"name",type:"text",bot:QUESTION_TEXT.name.bot },
   { id:"rubro",type:"choice",bot:QUESTION_TEXT.rubro.bot,opts:QUESTION_TEXT.rubro.opts },
@@ -384,12 +363,8 @@ export default function App(){
     if(nx>=QS.length&&!nc){setStep(nx);gen(nS,nA,null);return;}
     setStep(nx);const nQ=QS[nx];
     if(nQ){
-      const intro=[];
-      if(cQ?.id==="q13")intro.push(getCapMicrocopy(nS));
-      if(cQ?.id==="q23")intro.push(getVolMicrocopy(nS));
-      if(cQ?.id==="q32")intro.push(getClarityMicrocopy(nS));
       const nextBot=nx===1&&un.current?[formatText(APP_TEXT.welcomeBack, { name: un.current }),...nQ.bot]:nQ.bot;
-      await ab([...intro,...nextBot]);
+      await ab(nextBot);
       if(nQ.type==="text"){
         setShowIn(true);
         setTimeout(()=>ir.current?.focus(),300);

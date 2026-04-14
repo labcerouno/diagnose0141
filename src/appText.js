@@ -12,23 +12,6 @@ export const APP_TEXT = {
   rubroOtherPrompt: "Excelente. ¿Cuál?",
   supabaseInitWarning: "Supabase no inicializado: revisa VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY. Guardando en localStorage.",
   supabaseWriteError: "Error al guardar en Supabase:",
-  microcopy: {
-    cap: {
-      low: "Buena base para empezar con foco.",
-      mid: "Base sólida para escalar con impacto.",
-      high: "Capacidad alta para capturar valor rápido.",
-    },
-    vol: {
-      low: "Hay intención; falta ordenarla en un plan.",
-      mid: "La voluntad está bien encaminada.",
-      high: "Momentum alto para ejecutar con velocidad.",
-    },
-    cla: {
-      low: "Ya hay señales para definir el primer caso.",
-      mid: "Claridad suficiente para pasar a plan.",
-      high: "Claridad alta para ejecutar con objetivos concretos.",
-    },
-  },
 };
 
 export const QUESTION_TEXT = {
@@ -295,7 +278,7 @@ export const REPORT_TEXT = {
   needsTitle: "Lo que necesitás",
   nextStepTitle: "Siguiente paso",
   noSellCopy: "No tenemos nada que venderte. Si en algún momento querés contrastar una decisión técnica o tener una segunda opinión, podés contactarnos sin compromiso.",
-  nextStepWithChallenge: "Si querés profundizar en lo que encontramos, el siguiente paso es una conversación de 45 minutos sin compromiso. Hablemos de tu desafío.",
+  nextStepWithChallenge: "Si querés profundizar en lo que encontramos, el siguiente paso es una conversación de 15 minutos sin compromiso. Hablemos de tu desafío.",
   scheduleConversationButton: "Agendá una conversación →",
   shareTitle: "Informe Oxy46",
   shareText: "Te comparto mi informe de diagnóstico IA.",

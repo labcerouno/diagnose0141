@@ -113,32 +113,18 @@ function escapeHtml(text = "") {
 }
 
 function emphasizeOneKeywordPerSentence(text = "") {
-  const keywords = [
-    "impacto", "valor", "ejecucion", "ejecución", "estrategia", "resultado", "resultados",
-    "crecimiento", "prioridad", "riesgo", "velocidad", "foco", "retorno", "metricas", "métricas",
-    "decision", "decisión", "transformacion", "transformación", "ventaja", "escala", "gobernanza",
-    "kpis", "objetivo", "plan",
-  ];
+  const manualBold = [];
+  const withTokens = text.replace(/\*([^*]+)\*/g, (_, inner) => {
+    const token = `__MANUAL_BOLD_${manualBold.length}__`;
+    manualBold.push(inner);
+    return token;
+  });
 
-  const safe = escapeHtml(text);
-  const chunks = safe.split(/([.!?]+(?:\s+|$))/);
-
-  const highlightSentence = (sentence) => {
-    for (const keyword of keywords) {
-      const re = new RegExp(`(${keyword})`, "i");
-      if (re.test(sentence)) return sentence.replace(re, "<strong>$1</strong>");
-    }
-    return sentence.replace(/\b([A-Za-zÁÉÍÓÚÜÑáéíóúüñ]{8,})\b/, "<strong>$1</strong>");
-  };
-
-  const out = [];
-  for (let i = 0; i < chunks.length; i += 2) {
-    const sentence = chunks[i] || "";
-    const end = chunks[i + 1] || "";
-    out.push(highlightSentence(sentence) + end);
-  }
-
-  return out.join("");
+  return escapeHtml(withTokens)
+    .replace(/__MANUAL_BOLD_(\d+)__/g, (_, idx) => {
+      const value = manualBold[Number(idx)] || "";
+      return `<strong>${escapeHtml(value)}</strong>`;
+    });
 }
 
 function buildScoredOptions(questionId) {
@@ -206,11 +192,11 @@ function makeReportPdf(r){
     }
   };
 
-  const addTitle = (text) => {
+  const addTitle = (text, color = [34, 43, 46]) => {
     ensureSpace(32);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(18);
-    doc.setTextColor(34, 43, 46);
+    doc.setTextColor(color[0], color[1], color[2]);
     doc.text(text, margin, y);
     y += 22;
   };
@@ -226,7 +212,7 @@ function makeReportPdf(r){
     y += lines.length * lineH + 8;
   };
 
-  addTitle(REPORT_TEXT.title);
+  addTitle(REPORT_TEXT.title, [108, 197, 218]);
   addSection(formatText(REPORT_TEXT.profileSummary, { name: r.nm || "Empresa", label: ARCHETYPE_LABELS[r.ar] || r.ar }), [53, 66, 76]);
 
   addTitle(REPORT_TEXT.diagnosisTitle);
@@ -242,7 +228,7 @@ function makeReportPdf(r){
     addSection(r.ef);
   }
 
-  addTitle(REPORT_TEXT.needsTitle);
+  addTitle(REPORT_TEXT.needsTitle, [108, 197, 218]);
   NEEDS_TEXT[r.ar].split("\n\n").forEach((x) => addSection(x));
 
   addTitle(REPORT_TEXT.nextStepTitle);
@@ -270,7 +256,7 @@ function makeReportPdf(r){
 
 function Bub({t,f}){
   if(f==="user")return <div style={{display:"flex",justifyContent:"flex-end",marginBottom:10,animation:"fs .25s ease-out"}}><div style={{background:C.userBub,borderRadius:14,padding:"12px 17px",maxWidth:"79%",fontSize:16,fontWeight:600,letterSpacing:0.1,color:C.userText,boxShadow:`0 8px 16px ${C.darkFade}`}}>{t}</div></div>;
-  return <div style={{display:"flex",gap:10,marginBottom:10,animation:"fs .35s ease-out"}}><div style={{width:30,height:30,borderRadius:"50%",background:C.accentStrong,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,boxShadow:`0 0 0 4px ${C.accentFade}`,overflow:"hidden"}}><img src={oxyLogo} alt={APP_TEXT.logoAlt} style={{width:"100%",height:"100%",objectFit:"contain",padding:4}}/></div><div style={{background:C.botBub,borderRadius:14,padding:"13px 14px",maxWidth:"84%",fontSize:16,lineHeight:1.58,color:C.text,textAlign:"left",border:`1px solid ${C.pillBd}`,boxShadow:`0 8px 16px ${C.darkFade}`}} dangerouslySetInnerHTML={{__html:t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}}/></div>;
+  return <div style={{display:"flex",gap:10,marginBottom:10,animation:"fs .35s ease-out"}}><div style={{width:30,height:30,borderRadius:"50%",background:C.accentStrong,display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0,marginTop:2,boxShadow:`0 0 0 4px ${C.accentFade}`,overflow:"hidden"}}><img src={oxyLogo} alt={APP_TEXT.logoAlt} style={{width:"100%",height:"100%",objectFit:"contain",padding:4}}/></div><div style={{background:C.botBub,borderRadius:14,padding:"13px 14px",maxWidth:"84%",fontSize:16,lineHeight:1.58,color:C.text,textAlign:"left",border:`1px solid ${C.pillBd}`,boxShadow:`0 8px 16px ${C.darkFade}`}} dangerouslySetInnerHTML={{__html:t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<strong>$1</strong>')}}/></div>;
 }
 
 function Res({r}){
@@ -304,6 +290,7 @@ function Res({r}){
 
   return <div style={{animation:"fs .5s ease-out"}}><div style={{background:C.botBub,borderRadius:14,padding:"20px 16px",marginBottom:10,marginLeft:40,border:`1px solid ${C.pillBd}`,boxShadow:`0 10px 24px ${C.darkFade}`}}>
     <div style={{fontSize:15.5,lineHeight:1.75,color:C.text}}>
+      <p style={{margin:"0 0 12px",fontWeight:780,fontSize:19,color:C.accent}}>{REPORT_TEXT.title}</p>
       <p style={{margin:"0 0 14px"}} dangerouslySetInnerHTML={{__html:emphasizeOneKeywordPerSentence(p.intro)}}/>
       {p.bullets.map((b,i)=><div key={i} style={{display:"flex",gap:10,margin:"8px 0"}}><span style={{color:C.accentStrong,fontWeight:700,flexShrink:0,marginTop:2}}>→</span><span dangerouslySetInnerHTML={{__html:emphasizeOneKeywordPerSentence(b)}}/></div>)}
       <p style={{margin:"14px 0 0",color:C.muted,fontStyle:"italic",fontSize:14.5}} dangerouslySetInnerHTML={{__html:emphasizeOneKeywordPerSentence(p.close)}}/>
@@ -315,7 +302,7 @@ function Res({r}){
       {r.ef&&<><div style={{height:1,background:C.dangerFade,margin:"20px 0"}}/><p style={{margin:"0 0 8px",fontWeight:760,color:C.danger,fontSize:12,textTransform:"uppercase",letterSpacing:0.9}}>{REPORT_TEXT.educationGapTitle}</p><p style={{margin:"0 0 10px",fontSize:14.5,lineHeight:1.65}} dangerouslySetInnerHTML={{__html:emphasizeOneKeywordPerSentence(r.ef)}}/></>}
 
       <div style={{height:1,background:C.pillBd,margin:"20px 0"}}/>
-      <p style={{margin:"0 0 8px",fontWeight:760,color:C.accentStrong,fontSize:12,textTransform:"uppercase",letterSpacing:0.9}}>{REPORT_TEXT.needsTitle}</p>
+      <p style={{margin:"0 0 8px",fontWeight:760,color:C.accent,fontSize:12,textTransform:"uppercase",letterSpacing:0.9}}>{REPORT_TEXT.needsTitle}</p>
       {NEEDS_TEXT[r.ar].split("\n\n").map((x,i)=><p key={i} style={{margin:"0 0 12px",fontSize:14.5,lineHeight:1.65}} dangerouslySetInnerHTML={{__html:emphasizeOneKeywordPerSentence(x)}}/>)}
     </div></div>
     <div style={{background:C.botBub,borderRadius:14,padding:"16px 16px",marginLeft:40,marginTop:8,border:`1px solid ${C.pillBd}`,boxShadow:`0 10px 24px ${C.darkFade}`}}>

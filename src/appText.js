@@ -270,7 +270,7 @@ export const ARCHETYPE_LABELS = {
 };
 
 export const REPORT_TEXT = {
-  title: "Informe de Madurez IA - Oxy46",
+  title: "Diagnóstico AI Oxy46",
   profileSummary: "{{name}} - {{label}}",
   diagnosisTitle: "Diagnóstico",
   riskTitle: "Tu mayor riesgo",

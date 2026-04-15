@@ -31,7 +31,7 @@ Texto libre
 
 ### Mensajes del bot
 
-- Buen día 👋 Soy el **Asistente estratégico Oxy46 en IA**.
+- Buen día 👋 Soy el **Asistente estratégico OXY46 en IA**.
 - Tres minutos. Respuestas directas. Diagnóstico real.
 - ¿Tu nombre y empresa?
 

@@ -203,7 +203,7 @@ function Res({r}){
     </div></div>
     <div style={{background:C.botBub,borderRadius:14,padding:"16px 16px",marginLeft:40,marginTop:8,border:`1px solid ${C.pillBd}`,boxShadow:`0 10px 24px ${C.darkFade}`}}>
       <p style={{margin:0,fontSize:15.5,lineHeight:1.6,color:C.text}} dangerouslySetInnerHTML={{__html:emphasizeOneKeywordPerSentence(isAutonomo?REPORT_TEXT.noSellCopy:REPORT_TEXT.nextStepWithChallenge)}}/>
-      <button onClick={()=>window.location.href="mailto:ai@oxy46.com?subject=Agendar%20llamada"} style={{marginTop:14,background:C.accentStrong,color:C.white,border:"none",borderRadius:10,padding:"13px 24px",fontSize:15,fontWeight:700,letterSpacing:0.2,cursor:"pointer",width:"100%",transition:"filter .2s"}} onMouseEnter={e=>e.target.style.filter="brightness(1.1)"} onMouseLeave={e=>e.target.style.filter="none"}>{isAutonomo?APP_TEXT.learnMoreButton:REPORT_TEXT.scheduleConversationButton}</button>
+      <button onClick={()=>window.location.href=isAutonomo?APP_TEXT.learnMoreButtonUrl:REPORT_TEXT.scheduleConversationButtonUrl} style={{marginTop:14,background:C.accentStrong,color:C.white,border:"none",borderRadius:10,padding:"13px 24px",fontSize:15,fontWeight:700,letterSpacing:0.2,cursor:"pointer",width:"100%",transition:"filter .2s"}} onMouseEnter={e=>e.target.style.filter="brightness(1.1)"} onMouseLeave={e=>e.target.style.filter="none"}>{isAutonomo?APP_TEXT.learnMoreButton:REPORT_TEXT.scheduleConversationButton}</button>
     </div></div>;
 }
 

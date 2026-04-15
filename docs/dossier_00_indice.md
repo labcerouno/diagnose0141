@@ -1,7 +1,7 @@
-# Dossier IA LATAM & Argentina — Oxy46
+# Dossier IA LATAM & Argentina — OXY46
 ## Índice y guía de uso
 
-**Compilado por Oxy46 — Abril 2026**  
+**Compilado por OXY46 — Abril 2026**  
 **Fuentes primarias:** McKinsey, BCG, Bain, EY, Deloitte, CEPAL, Banco Mundial, OIT, IDC, NTT DATA, Microsoft, Meta, Google, SAP, IDEA, Fundar, Gobierno de Argentina
 
 ---
@@ -11,7 +11,7 @@
 Este dossier consolida datos clave de **17 reportes** sobre IA en América Latina y Argentina (2023–2026). Su función es proveer contexto factual y cuantitativo para:
 
 - El **chatbot de diagnóstico de madurez en IA** (`diagnostico_chatbot.jsx`)
-- Workshops y presentaciones ejecutivas de Oxy46
+- Workshops y presentaciones ejecutivas de OXY46
 - Argumentación comercial y generación de urgencia en leads
 - Redacción de contenidos, emails y materiales de captación
 

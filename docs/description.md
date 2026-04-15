@@ -2,7 +2,7 @@
 
 ## Propósito
 
-Chatbot de diagnóstico de madurez en IA para empresas argentinas/latinoamericanas. Desarrollado para **Oxy46**, es una herramienta de captación de leads que guía al usuario a través de 11 preguntas y devuelve un perfil estratégico personalizado. El objetivo comercial es derivar al usuario a agendar una conversación con Oxy46 (`oxy46.com`).
+Chatbot de diagnóstico de madurez en IA para empresas argentinas/latinoamericanas. Desarrollado para **OXY46**, es una herramienta de captación de leads que guía al usuario a través de 11 preguntas y devuelve un perfil estratégico personalizado. El objetivo comercial es derivar al usuario a agendar una conversación con OXY46 (`oxy46.com`).
 
 ## Stack
 

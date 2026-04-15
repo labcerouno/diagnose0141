@@ -21,7 +21,7 @@ Estos datos instalan el problema antes de presentar cualquier solución:
 
 ---
 
-## 2. La paradoja argentina (el argumento central de Oxy46)
+## 2. La paradoja argentina (el argumento central de OXY46)
 
 Argentina tiene una contradicción única que justifica exactamente el servicio de diagnóstico:
 
@@ -36,7 +36,7 @@ Argentina tiene una contradicción única que justifica exactamente el servicio 
 | **Pero:** sin resultados claros | Solo 43% ve resultados de implementación | Meta/Linux Foundation 2025 |
 | **Pero:** sin talento | 78% no tiene personal con experiencia en IA | Bain 2025 |
 
-**Lectura narrativa:** Argentina quiere hacer IA, la está usando individualmente, pero no la está convirtiendo en resultado empresarial. Eso es exactamente lo que Oxy46 resuelve.
+**Lectura narrativa:** Argentina quiere hacer IA, la está usando individualmente, pero no la está convirtiendo en resultado empresarial. Eso es exactamente lo que OXY46 resuelve.
 
 ---
 
@@ -134,7 +134,7 @@ Datos relevantes:
 
 ---
 
-## 6. Datos sobre brecha de formación (para la sección de Academia de Oxy46)
+## 6. Datos sobre brecha de formación (para la sección de Academia de OXY46)
 
 - 88% usa IA individualmente, solo 35% fue capacitado por su empresa → IDEA 2025
 - Capacitación formal en LATAM creció de 28% (2023) a 61,96% (2024), pero sigue siendo la principal deuda → NTT DATA 2025

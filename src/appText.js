@@ -1,7 +1,7 @@
 export const APP_TEXT = {
-  assistantTitle: "Asistente estratégico Oxy46 en IA",
+  assistantTitle: "Asistente estratégico OXY46 en IA",
   statusActive: "Activo",
-  logoAlt: "Oxy46",
+  logoAlt: "OXY46",
   welcomeBack: "Bienvenido, {{name}}. Empecemos.",
   diagnosisReady: "{{name}}, acá va tu diagnóstico.",
   namePlaceholder: "Nombre · Empresa",
@@ -9,6 +9,7 @@ export const APP_TEXT = {
   shareLoading: "Generando informe...",
   shareButton: "Descargar y compartir informe",
   learnMoreButton: "Escribinos a ia@oxy46.com para seguir",
+  learnMoreButtonUrl: "mailto:ia@oxy46.com?subject=Agendar%20llamada",
   rubroOtherPrompt: "Excelente. ¿Cuál?",
   supabaseInitWarning: "Supabase no inicializado: revisa VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY. Guardando en localStorage.",
   supabaseWriteError: "Error al guardar en Supabase:",
@@ -17,7 +18,7 @@ export const APP_TEXT = {
 export const QUESTION_TEXT = {
   name: {
     bot: [
-      "Buen día 👋 Soy el **Asistente estratégico Oxy46 en IA**.",
+      "Buen día 👋 Soy el **Asistente estratégico OXY46 en IA**.",
       "Tres minutos. Respuestas directas. Diagnóstico real.",
       "¿Tu nombre y empresa?",
     ],
@@ -277,7 +278,7 @@ export const ARCHETYPE_LABELS = {
 };
 
 export const REPORT_TEXT = {
-  title: "Diagnóstico AI Oxy46",
+  title: "Diagnóstico IA OXY46",
   profileSummary: "{{name}} - {{label}}",
   diagnosisTitle: "Diagnóstico",
   riskTitle: "El mayor riesgo para tu empresa",
@@ -287,7 +288,8 @@ export const REPORT_TEXT = {
   noSellCopy: "Estás muy avanzado. Seguramente podemos colaborar en algún proyecto estratégico de alto impacto.",
   nextStepWithChallenge: "Si querés profundizar en lo que encontramos, el siguiente paso es una conversación de 15 minutos sin compromiso. Hablemos de tu desafío.",
   scheduleConversationButton: "Escribinos a ia@oxy46.com para seguir",
-  shareTitle: "Informe Oxy46",
+  scheduleConversationButtonUrl: "mailto:ia@oxy46.com?subject=Agendar%20llamada",
+  shareTitle: "Informe OXY46",
   shareText: "Te comparto mi informe de diagnóstico IA.",
   filePrefix: "informe-oxy46",
 };

@@ -226,7 +226,7 @@ export const RISK_TEXT = {
   informado: "El mayor riesgo para una empresa en tu situación es que el proyecto muera antes de dar resultados. Los proyectos de IA no fallan por la tecnología — fallan cuando el sponsor no es real, cuando los datos no están listos, o cuando no hay alineamiento entre las áreas.\n\nSegún McKinsey + WEF (2026), solo el 6% de las empresas de LATAM captura impacto significativo de IA. La diferencia no es la tecnología sino la disciplina de ejecución.\n\n{{stat}}",
   constructor: "El mayor riesgo para una empresa con tu nivel de preparación es la parálisis por exceso de opciones. Cuando tenés capacidad e infraestructura, el peligro es querer hacer todo al mismo tiempo y no terminar nada. O peor: elegir el proyecto equivocado y desperdiciar el momentum.\n\n{{stat}}",
   listo: "El mayor riesgo para una empresa lista para ejecutar es elegir un partner de ejecución que no esté a la altura técnica. A tu nivel, la diferencia entre un resultado transformador y un proyecto mediocre depende de la calidad del equipo que construya.\n\n{{stat}}",
-  autonomo: "El mayor riesgo en tu situación es paradójico: que alguien te venda algo que no necesitás. Con tu nivel de madurez, la tentación del mercado es ofrecerte soluciones premium que no agregan valor proporcional a su costo.\n\n{{stat}}",
+  autonomo: "Si bien en este nivel los riesgos están muy controlados, podría ser que una mirada externa aporte una ángulo que no se llega a ver.\n\n{{stat}}",
 };
 
 export const NEEDS_TEXT = {
@@ -235,7 +235,7 @@ export const NEEDS_TEXT = {
   informado: "Tu empresa necesita dos cosas: un diagnóstico real del estado de datos y procesos, y un alineamiento directivo con objetivos claros y recursos comprometidos.\n\nEse trabajo previo evita el fracaso más común en IA: empezar con entusiasmo y frenar cuando la realidad de los datos o la falta de apoyo político aparece.",
   constructor: "Lo que necesitás es elegir el caso de uso con métricas claras e ir directo a ejecución — sin más diagnósticos ni workshops.\n\nUn sprint de definición de 2-3 semanas (caso, métricas, viabilidad) te da resultados medibles en 60-90 días en vez de meses de planificación que nunca aterriza.",
   listo: "Necesitás capacidad externa especializada para construir a la velocidad y calidad que tu ambición requiere — no consultores que te expliquen qué es IA.\n\nElegir bien esa pieza es la diferencia entre un proyecto que transforma la operación y uno que simplemente funciona.",
-  autonomo: "No necesitás ayuda externa. Lo que podría sumar es una perspectiva puntual: segunda opinión técnica, validación de approach o benchmark regional.\n\nPero es un nice-to-have. Ejecutá con confianza.",
+  autonomo: "Tenés todos los elementos para liderar el cambio. Si te interesa podemos trabajar en aspectos de alta estrategia o si necesitás un poco de músculo extra podemos ayudar.\n\nDe hecho, son los proyectos en los que más nos entusiasma trabajar.",
 };
 
 export const EDUCATION_TEXT = {
@@ -264,7 +264,7 @@ export const EDUCATION_TEXT = {
     2: "Tu equipo tiene base pero necesita un nivel superior de preparación para integrar soluciones avanzadas de IA en la operación diaria.",
     3: "Hubo formación básica. Para integrar lo que vas a construir, el equipo necesita capacitación alineada específicamente con las soluciones que se implementen.",
   },
-  fallback: "Detectamos una brecha importante entre lo que tu empresa quiere hacer con IA y lo que tu equipo está preparado para ejecutar. El 88% de los profesionales argentinos usa IA, pero solo el 35% fue capacitado por su empresa (IDEA, 2025).",
+  fallback: "Detectamos una brecha entre lo que tu empresa quiere hacer con IA y lo que tu equipo está preparado para ejecutar. El 88% de los profesionales argentinos usa IA, pero solo el 35% fue capacitado por su empresa (IDEA, 2025).",
 };
 
 export const ARCHETYPE_LABELS = {
@@ -280,13 +280,13 @@ export const REPORT_TEXT = {
   title: "Diagnóstico AI Oxy46",
   profileSummary: "{{name}} - {{label}}",
   diagnosisTitle: "Diagnóstico",
-  riskTitle: "Tu mayor riesgo",
+  riskTitle: "El mayor riesgo para tu empresa",
   educationGapTitle: "Brecha de formación detectada",
-  needsTitle: "Lo que necesitás",
+  needsTitle: "Lo que tu empresa necesita",
   nextStepTitle: "Siguiente paso",
-  noSellCopy: "No tenemos nada que venderte. Si en algún momento querés contrastar una decisión técnica o tener una segunda opinión, podés contactarnos sin compromiso.",
+  noSellCopy: "Estás muy avanzado. Seguramente podemos colaborar en algún proyecto estratégico de alto impacto.",
   nextStepWithChallenge: "Si querés profundizar en lo que encontramos, el siguiente paso es una conversación de 15 minutos sin compromiso. Hablemos de tu desafío.",
-  scheduleConversationButton: "Agendá una conversación →",
+  scheduleConversationButton: "Escribinos a ia@oxy46.com para seguir",
   shareTitle: "Informe Oxy46",
   shareText: "Te comparto mi informe de diagnóstico IA.",
   filePrefix: "informe-oxy46",

@@ -8,7 +8,7 @@ export const APP_TEXT = {
   answerPlaceholder: "Escribí tu respuesta...",
   shareLoading: "Generando informe...",
   shareButton: "Descargar y compartir informe",
-  learnMoreButton: "Conocer más de Oxy",
+  learnMoreButton: "Escribinos a ia@oxy46.com para seguir",
   rubroOtherPrompt: "Excelente. ¿Cuál?",
   supabaseInitWarning: "Supabase no inicializado: revisa VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY. Guardando en localStorage.",
   supabaseWriteError: "Error al guardar en Supabase:",

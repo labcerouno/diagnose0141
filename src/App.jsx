@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { jsPDF } from "jspdf";
 import { createClient } from "@supabase/supabase-js";
 import {
   APP_TEXT,
@@ -175,84 +174,6 @@ function eduFind(a,e){
 
 const A_COLORS={"curioso":"#FFE0B2","ansioso":"#FFCDD2","informado":"#90CAF9","constructor":"#A5D6A7","listo":"#81D4FA","autonomo":"#C8E6C9"};
 
-function makeReportPdf(r){
-  const p = getProfile(r.ar, r.nm);
-  const doc = new jsPDF({ unit:"pt", format:"a4" });
-  const pageW = doc.internal.pageSize.getWidth();
-  const pageH = doc.internal.pageSize.getHeight();
-  const margin = 44;
-  const contentW = pageW - margin * 2;
-  const ctaUrl = "https://oxy46.com";
-  let y = margin;
-
-  const ensureSpace = (need = 26) => {
-    if (y + need > pageH - margin) {
-      doc.addPage();
-      y = margin;
-    }
-  };
-
-  const addTitle = (text, color = [34, 43, 46]) => {
-    ensureSpace(32);
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(18);
-    doc.setTextColor(color[0], color[1], color[2]);
-    doc.text(text, margin, y);
-    y += 22;
-  };
-
-  const addSection = (text, color = [20, 28, 35]) => {
-    const lines = doc.splitTextToSize(text, contentW);
-    const lineH = 16;
-    ensureSpace(lines.length * lineH + 6);
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(11);
-    doc.setTextColor(color[0], color[1], color[2]);
-    doc.text(lines, margin, y);
-    y += lines.length * lineH + 8;
-  };
-
-  addTitle(REPORT_TEXT.title, [108, 197, 218]);
-  addSection(formatText(REPORT_TEXT.profileSummary, { name: r.nm || "Empresa", label: ARCHETYPE_LABELS[r.ar] || r.ar }), [53, 66, 76]);
-
-  addTitle(REPORT_TEXT.diagnosisTitle);
-  addSection(p.intro);
-  p.bullets.forEach((b) => addSection(`- ${b}`));
-  addSection(p.close, [123, 129, 140]);
-
-  addTitle(REPORT_TEXT.riskTitle);
-  r.risk.split("\n\n").forEach((x, i) => addSection(x, i > 0 ? [123, 129, 140] : [34, 43, 46]));
-
-  if (r.ef) {
-    addTitle(REPORT_TEXT.educationGapTitle);
-    addSection(r.ef);
-  }
-
-  addTitle(REPORT_TEXT.needsTitle, [108, 197, 218]);
-  NEEDS_TEXT[r.ar].split("\n\n").forEach((x) => addSection(x));
-
-  addTitle(REPORT_TEXT.nextStepTitle);
-  if (r.ar === "autonomo") {
-    addSection(REPORT_TEXT.noSellCopy);
-  } else {
-    addSection(formatText(REPORT_TEXT.nextStepWithChallenge, { challenge: r.des }));
-  }
-
-  ensureSpace(56);
-  const btnX = margin;
-  const btnY = y + 4;
-  const btnW = contentW;
-  const btnH = 38;
-  doc.setFillColor(53, 66, 76);
-  doc.roundedRect(btnX, btnY, btnW, btnH, 8, 8, "F");
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(12);
-  doc.setTextColor(255, 255, 255);
-  doc.text(REPORT_TEXT.scheduleConversationButton, btnX + btnW / 2, btnY + 24, { align:"center" });
-  doc.link(btnX, btnY, btnW, btnH, { url: ctaUrl });
-
-  return doc;
-}
 
 function Bub({t,f}){
   if(f==="user")return <div style={{display:"flex",justifyContent:"flex-end",marginBottom:10,animation:"fs .25s ease-out"}}><div style={{background:C.userBub,borderRadius:14,padding:"12px 17px",maxWidth:"79%",fontSize:16,fontWeight:600,letterSpacing:0.1,color:C.userText,boxShadow:`0 8px 16px ${C.darkFade}`}}>{t}</div></div>;
@@ -260,33 +181,8 @@ function Bub({t,f}){
 }
 
 function Res({r}){
-  const [sharing, setSharing] = useState(false);
   if(!r)return null;const p=getProfile(r.ar, r.nm);
   const isAutonomo = r.ar === "autonomo";
-
-  const shareReport = async () => {
-    if (sharing) return;
-    setSharing(true);
-    try {
-      const doc = makeReportPdf(r);
-      const safeName = (r.nm || "empresa").replace(/[^a-z0-9-_]+/gi, "_").toLowerCase();
-      const fileName = `${REPORT_TEXT.filePrefix}-${safeName}.pdf`;
-      const blob = doc.output("blob");
-      const file = new File([blob], fileName, { type: "application/pdf" });
-
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({ title: REPORT_TEXT.shareTitle, text: REPORT_TEXT.shareText, files: [file] });
-      } else {
-        doc.save(fileName);
-      }
-    } catch (e) {
-      const doc = makeReportPdf(r);
-      const safeName = (r.nm || "empresa").replace(/[^a-z0-9-_]+/gi, "_").toLowerCase();
-      doc.save(`${REPORT_TEXT.filePrefix}-${safeName}.pdf`);
-    } finally {
-      setSharing(false);
-    }
-  };
 
   return <div style={{animation:"fs .5s ease-out"}}><div style={{background:C.botBub,borderRadius:14,padding:"20px 16px",marginBottom:10,marginLeft:40,border:`1px solid ${C.pillBd}`,boxShadow:`0 10px 24px ${C.darkFade}`}}>
     <div style={{fontSize:15.5,lineHeight:1.75,color:C.text}}>
@@ -307,8 +203,7 @@ function Res({r}){
     </div></div>
     <div style={{background:C.botBub,borderRadius:14,padding:"16px 16px",marginLeft:40,marginTop:8,border:`1px solid ${C.pillBd}`,boxShadow:`0 10px 24px ${C.darkFade}`}}>
       <p style={{margin:0,fontSize:15.5,lineHeight:1.6,color:C.text}} dangerouslySetInnerHTML={{__html:emphasizeOneKeywordPerSentence(isAutonomo?REPORT_TEXT.noSellCopy:REPORT_TEXT.nextStepWithChallenge)}}/>
-      <button onClick={()=>window.open("https://oxy46.com","_blank")} style={{marginTop:14,background:C.accentStrong,color:C.white,border:"none",borderRadius:10,padding:"13px 24px",fontSize:15,fontWeight:700,letterSpacing:0.2,cursor:"pointer",width:"100%",transition:"filter .2s"}} onMouseEnter={e=>e.target.style.filter="brightness(1.1)"} onMouseLeave={e=>e.target.style.filter="none"}>{isAutonomo?APP_TEXT.learnMoreButton:REPORT_TEXT.scheduleConversationButton}</button>
-      <button onClick={shareReport} disabled={sharing} style={{marginTop:10,background:"transparent",color:C.accentStrong,border:`1px solid ${C.accentStrong}`,borderRadius:10,padding:"12px 24px",fontSize:15,fontWeight:680,cursor:sharing?"wait":"pointer",width:"100%",opacity:sharing?0.7:1}}>{sharing?APP_TEXT.shareLoading:APP_TEXT.shareButton}</button>
+      <button onClick={()=>window.location.href="mailto:ai@oxy46.com?subject=Agendar%20llamada"} style={{marginTop:14,background:C.accentStrong,color:C.white,border:"none",borderRadius:10,padding:"13px 24px",fontSize:15,fontWeight:700,letterSpacing:0.2,cursor:"pointer",width:"100%",transition:"filter .2s"}} onMouseEnter={e=>e.target.style.filter="brightness(1.1)"} onMouseLeave={e=>e.target.style.filter="none"}>{isAutonomo?APP_TEXT.learnMoreButton:REPORT_TEXT.scheduleConversationButton}</button>
     </div></div>;
 }
 
